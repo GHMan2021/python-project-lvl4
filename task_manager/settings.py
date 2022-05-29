@@ -34,7 +34,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'webserver',
-    'glacial-stream-11316.herokuapp.com'
+    '0.0.0.0',
+    'yuri-task-manager.herokuapp.com',
 ]
 
 
