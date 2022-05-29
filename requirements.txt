@@ -11,3 +11,4 @@ python-dotenv==0.20.0
 setuptools==59.6.0
 sqlparse==0.4.2
 psycopg2==2.9.3
+django-bootstrap4==22.1
