@@ -12,3 +12,4 @@ setuptools==59.6.0
 sqlparse==0.4.2
 psycopg2==2.9.3
 django-bootstrap4==22.1
+whitenoise==6.1.0
