@@ -1,4 +1,5 @@
 {% load bootstrap4 %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="ru-ru">
@@ -6,7 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}Менеджер задач{% endblock %}</title>
+    <title>{% block title %}{% translate "AppNameTitle" %}{% endblock %}</title>
     {% bootstrap_css %}
 </head>
 

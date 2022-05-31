@@ -7,4 +7,6 @@ start-run:
 start:
 	export DJANGO_SETTINGS_MODULE=task_manager.settings && \
 	poetry run gunicorn task_manager.wsgi
+migrate:
+	poetry run python manage.py migrate
 
