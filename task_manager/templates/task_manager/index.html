@@ -1,53 +1,18 @@
+{% load bootstrap4 %}
+
 <!DOCTYPE html>
 <html lang="ru-ru">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <title>Менеджер задач</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Менеджер задач{% endblock %}</title>
+    {% bootstrap_css %}
 </head>
 
-  <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-      <a class="navbar-brand" href="https://yuri-task-manager.herokuapp.com/">Менеджер задач</a>
+<body class="d-flex flex-column min-vh-100">
+    {# добавляем панель навигации из nav.html #}
+    {% include 'task_manager/nav.html' %}
+</body>
 
-      <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="navbar-collapse collapse" id="navbarToggleExternalContent" style="">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="https://yuri-task-manager.herokuapp.com/users/">Пользователи</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="https://yuri-task-manager.herokuapp.com/login/">Вход</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://yuri-task-manager.herokuapp.com/users/create/">Регистрация</a>
-            </li>
-        </ul>
-      </div>
-
-    </nav>
-<!--
-    <div class="container wrapper flex-grow-1">
-      <h1 class="my-4">
-
-      </h1>
-
-      <h1 class="my-4">
-
-      </h1>
-    </div>-->
-
-    <footer>
-      <div class="container my-5 pt-4 border-top">
-        <h6>&copy; 2022</h6>
-      </div>
-    </footer>
-
-  </body>
 </html>

@@ -18,6 +18,6 @@ from django.urls import path
 from task_manager import views
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.IndexView.as_view(), name='/'),
     #path('admin/', admin.site.urls),
 ]
