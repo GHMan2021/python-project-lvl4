@@ -3,17 +3,36 @@
 
 <!DOCTYPE html>
 <html lang="ru-ru">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>{% block title %}{% translate "AppNameTitle" %}{% endblock %}</title>
-    {% bootstrap_css %}
-</head>
+    {% bootstrap_css %} {% bootstrap_javascript jquery='full' %}
+  </head>
 
-<body class="d-flex flex-column min-vh-100">
-    {# добавляем панель навигации из nav.html #}
-    {% include 'task_manager/nav.html' %}
-</body>
+  <body class="d-flex flex-column min-vh-100">
+    {% include 'task_manager/nav.html' %} {% block content %}
+    <div class="container wrapper flex-grow-1">
+      {% bootstrap_messages %}
 
+      <h1 class="my-4"></h1>
+      <h1 class="my-4"></h1>
+      <div class="card">
+        <div class="card-body p-5 bg-light">
+          <div class="display-4">Менеджер задач</div>
+          <p class="lead">Проект №4</p>
+          <hr/>
+          <a
+            class="btn btn-primary btn-lg"
+            href="https://github.com/GHMan2021/python-project-lvl4"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+  </body>
 </html>

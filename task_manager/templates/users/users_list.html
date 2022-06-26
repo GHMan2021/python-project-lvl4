@@ -1,0 +1,35 @@
+{% extends 'task_manager/index.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+  <h1 class="my-4">Пользователи</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Имя пользователя</th>
+        <th>Полное имя</th>
+        <th>Дата создания</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for u in users_list %}
+    <tr>
+        <td>{{ u.pk }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u }}</td>
+        <td>{{ u.date_joined|date:"d.m.Y H:i" }}</td>
+        <td><a href="{% url 'user_update' u.pk %}">Изменить</a><br>
+            <a href="{% url 'user_delete' u.pk %}">Удалить</a></td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+{% endblock %}

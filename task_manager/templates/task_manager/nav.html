@@ -1,31 +1,52 @@
 {% load i18n %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+  <a class="navbar-brand" href="{% url '/' %}">{% trans 'AppNameLink' %}</a>
 
-    <a class="navbar-brand" href="{% url '/' %}">{% trans 'AppNameLink' %}</a>
+  <button
+    class="navbar-toggler collapsed"
+    data-toggle="collapse"
+    data-target="#navbarToggleExternalContent"
+    aria-expanded="false"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <button class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarToggleExternalContent"
-        aria-expanded="false">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  <div
+    class="navbar-collapse collapse"
+    id="navbarToggleExternalContent"
+    style=""
+  >
+    <ul class="navbar-nav mr-auto">
+      <!--users-->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'users_list' %}"
+          >{% trans 'UsersLink' %}</a
+        >
+      </li>
+    </ul>
 
-    <div class="navbar-collapse collapse" id="navbarToggleExternalContent" style="">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url '/' %}">{% trans 'UsersLink' %}</a>
-                <!--users-->
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url '/' %}">{% trans 'LoginLink' %}</a>
-                <!--login-->
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url '/' %}">{% trans 'CreateUserLink' %}</a>
-                <!--users:create-->
-            </li>
-        </ul>
-    </div>
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+      <!--logout-->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Выход</a>
+      </li>
 
+      {% else %}
+      <!--users:create-->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'user_add' %}"
+          >{% trans 'CreateUserLink' %}</a
+        >
+      </li>
+
+      <!--login-->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">{% trans 'LoginLink' %}</a>
+      </li>
+
+      {% endif %}
+    </ul>
+  </div>
 </nav>
