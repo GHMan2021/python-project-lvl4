@@ -17,36 +17,55 @@
     id="navbarToggleExternalContent"
     style=""
   >
-    <ul class="navbar-nav mr-auto">
-      <!--users-->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'users_list' %}"
-          >{% trans 'UsersLink' %}</a
-        >
-      </li>
-    </ul>
-
-    <ul class="navbar-nav">
       {% if user.is_authenticated %}
-      <!--logout-->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'logout' %}">Выход</a>
-      </li>
+
+        <ul class="navbar-nav mr-auto">
+          <!--users-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users_list' %}">{% trans 'UsersLink' %}</a>
+          </li>
+          <!--statuses-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'statuses_list' %}">Статусы</a>
+          </li>
+          <!--marks-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'statuses_list' %}">Метки</a>
+          </li>
+          <!--tasks-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'statuses_list' %}">Задачи</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <!--logout-->
+          <li class="navbar-nav">
+            <a class="nav-link" href="{% url 'logout' %}">Выход</a>
+          </li>
+        </ul>
 
       {% else %}
-      <!--users:create-->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'user_add' %}"
-          >{% trans 'CreateUserLink' %}</a
-        >
-      </li>
 
-      <!--login-->
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'login' %}">{% trans 'LoginLink' %}</a>
-      </li>
+        <ul class="navbar-nav mr-auto">
+          <!--users-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users_list' %}">{% trans 'UsersLink' %}</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <!--users:create-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'user_add' %}">{% trans 'CreateUserLink' %}</a>
+          </li>
+          <!--login-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">{% trans 'LoginLink' %}</a>
+          </li>
+        </ul>
 
       {% endif %}
-    </ul>
+
   </div>
 </nav>

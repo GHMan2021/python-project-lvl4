@@ -10,11 +10,16 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>{% block title %}{% translate "AppNameTitle" %}{% endblock %}</title>
-    {% bootstrap_css %} {% bootstrap_javascript jquery='full' %}
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+
   </head>
 
   <body class="d-flex flex-column min-vh-100">
-    {% include 'task_manager/nav.html' %} {% block content %}
+    {% include 'task_manager/nav.html' %}
+
+    {% block content %}
     <div class="container wrapper flex-grow-1">
       {% bootstrap_messages %}
 
@@ -34,5 +39,6 @@
       </div>
     </div>
     {% endblock %}
+
   </body>
 </html>

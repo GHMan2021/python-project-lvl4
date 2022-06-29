@@ -11,4 +11,5 @@ migrate:
 	poetry run python manage.py migrate
 test:
 	poetry run python manage.py test
-
+shell:
+	poetry run python manage.py shell
