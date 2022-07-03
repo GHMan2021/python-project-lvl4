@@ -1,0 +1,14 @@
+[
+{
+    "model": "tasks.task",
+    "pk": 72,
+    "fields": {
+        "name": "task_test",
+        "description": "describe for task_test",
+        "status": 5,
+        "executor": 71,
+        "author": 71,
+        "date_created": "2022-07-01T08:08:00.151Z"
+    }
+}
+]

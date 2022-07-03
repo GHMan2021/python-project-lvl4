@@ -1,0 +1,10 @@
+[
+{
+    "model": "statuses.status",
+    "pk": 5,
+    "fields": {
+        "name": "status_test",
+        "date_created": "2022-07-02T15:35:12.747Z"
+    }
+}
+]

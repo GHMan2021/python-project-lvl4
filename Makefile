@@ -7,6 +7,8 @@ start:
 start-gu:
 	export DJANGO_SETTINGS_MODULE=task_manager.settings && \
 	poetry run gunicorn task_manager.wsgi
+makemigrations:
+	poetry run python manage.py makemigrations
 migrate:
 	poetry run python manage.py migrate
 test:

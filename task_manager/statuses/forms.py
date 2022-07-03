@@ -6,4 +6,6 @@ class StatusForm(ModelForm):
 
     class Meta:
         model = Status
-        fields = ('name',)
+        fields = (
+            'name',
+        )

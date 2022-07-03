@@ -18,8 +18,8 @@ class CreateStatus(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'statuses/status_create.html'
     success_url = reverse_lazy('statuses_list')
     success_message = "Статус успешно создан"
-    
-    
+
+
 class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Status
     form_class = StatusForm
