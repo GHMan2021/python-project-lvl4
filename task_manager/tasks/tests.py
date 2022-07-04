@@ -3,12 +3,13 @@ from django.test import TestCase
 from django.urls import reverse
 
 from .models import Task
-from task_manager.statuses.models import Status
+from ..statuses.models import Status
+from ..labels.models import Label
 
 
 class TaskTestCase(TestCase):
 
-    fixtures = ['user.json', 'status.json', 'task.json']
+    fixtures = ['user.json', 'status.json', 'task.json', 'label.json']
 
     def setUp(self):
         user_logged = get_user_model().objects.first()
@@ -24,6 +25,7 @@ class TaskTestCase(TestCase):
         response = self.client.get(reverse('task_detail', args=[task.pk]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='tasks/task_detail.html')
+        self.assertEqual(task.labels.count(), 0)
 
     def test_task_create(self):
         response = self.client.get(reverse('task_create'))
@@ -32,13 +34,15 @@ class TaskTestCase(TestCase):
 
         status = Status.objects.first()
         user = get_user_model().objects.first()
-        task_data_test = {
+        labels = Label.objects.first()
+        task_create_data = {
             'name': 'name_test2',
             'description': 'describe for task_test2',
             'status': status.pk,
             'executor': user.pk,
+            'labels': labels.pk
             }
-        response = self.client.post(reverse('task_create'), data=task_data_test)
+        response = self.client.post(reverse('task_create'), data=task_create_data)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('tasks_list'))
         self.assertEqual(Task.objects.count(), 2)
@@ -49,6 +53,7 @@ class TaskTestCase(TestCase):
         self.assertEqual(task.status.name, 'status_test')
         self.assertEqual(task.executor.username, 'username_test')
         self.assertEqual(task.author.username, 'username_test')
+        self.assertEqual(task.labels.all()[0].name, 'label_test')
 
     def test_task_update_author(self):
         task = Task.objects.first()

@@ -15,3 +15,5 @@ test:
 	poetry run python manage.py test
 shell:
 	poetry run python manage.py shell
+heroku_migrate:
+	heroku run python manage.py migrate

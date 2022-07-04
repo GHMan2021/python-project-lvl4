@@ -20,3 +20,7 @@ urlpatterns += [
 urlpatterns += [
     path('tasks/', include('task_manager.tasks.urls')),
 ]
+
+urlpatterns += [
+    path('labels/', include('task_manager.labels.urls')),
+]

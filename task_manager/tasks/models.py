@@ -1,15 +1,22 @@
 from django.db import models
+
 from task_manager.statuses.models import Status
 from task_manager.users.models import CustomUser
+from task_manager.labels.models import Label
 
 
 class Task(models.Model):
     name = models.CharField(
-        'Имя',
+        verbose_name='Имя',
         max_length=150,
-        db_index=True
+        null=False,
+        blank=False,
+        unique=True,
     )
-    description = models.TextField('Описание')
+    description = models.TextField(
+        verbose_name='Описание',
+        blank=True,
+    )
     status = models.ForeignKey(
         Status,
         on_delete=models.PROTECT,
@@ -17,23 +24,28 @@ class Task(models.Model):
     )
     executor = models.ForeignKey(
         CustomUser,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         blank=True,
         null=True,
         verbose_name='Исполнитель',
-        related_name='executor'
+        related_name='executors',
     )
     author = models.ForeignKey(
         CustomUser,
         on_delete=models.CASCADE,
         verbose_name='Автор',
-        related_name='author'
+        related_name='authors',
     )
-    # label = models.CharField('Метка', max_length=20)
+    labels = models.ManyToManyField(
+        Label,
+        blank=True,
+        verbose_name='Метки',
+        related_name='labels',
+        through='TaskLabels',
+    )
     date_created = models.DateTimeField(
-        'Дата создания',
+        verbose_name='Дата создания',
         auto_now_add=True,
-        null=True
     )
 
     def __str__(self):
@@ -42,3 +54,14 @@ class Task(models.Model):
     class Meta:
         verbose_name = 'Task'
         verbose_name_plural = 'Tasks'
+
+
+class TaskLabels(models.Model):
+    task = models.ForeignKey(
+        Task,
+        on_delete=models.CASCADE
+    )
+    label = models.ForeignKey(
+        Label,
+        on_delete=models.PROTECT
+    )

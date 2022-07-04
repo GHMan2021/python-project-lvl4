@@ -1,15 +1,15 @@
 from django.db import models
 
 
-class Status(models.Model):
+class Label(models.Model):
     name = models.CharField(
-        'Имя',
+        verbose_name='Имя',
         max_length=20,
         null=False,
         unique=True,
     )
     date_created = models.DateTimeField(
-        'Дата создания',
+        verbose_name='Дата создания',
         auto_now_add=True,
     )
 
@@ -17,5 +17,5 @@ class Status(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Status'
-        verbose_name_plural = 'Statuses'
+        verbose_name = 'Label'
+        verbose_name_plural = 'Labels'
