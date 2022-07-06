@@ -15,6 +15,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 
+import rollbar
+
+# Load environment variables
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,8 +35,17 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
-# Application definition
+# Rollbar service
+POST_SERVER_ITEM_ACCESS_TOKEN = os.getenv('ROLLBAR_ACCESS_TOKEN')
+ROLLBAR = {
+    'access_token': POST_SERVER_ITEM_ACCESS_TOKEN,
+    'environment': 'development' if DEBUG else 'production',
+    'branch': 'master',
+    'root': Path(BASE_DIR, 'task_manager')
+ }
+rollbar.init(**ROLLBAR)
 
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -62,6 +74,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -97,6 +111,7 @@ DATABASES = {
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
