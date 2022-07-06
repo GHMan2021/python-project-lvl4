@@ -4,21 +4,22 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import (
-    ListView,
     CreateView,
     UpdateView,
     DeleteView,
     DetailView,
 )
+from django_filters.views import FilterView
 
 from .models import Task
 from .forms import TaskForm
+from .filters import TaskFilter
 
 
-class TasksListView(LoginRequiredMixin, ListView):
+class TasksListView(LoginRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks/tasks_list.html'
-    context_object_name = 'tasks_list'
+    filterset_class = TaskFilter
 
 
 class TaskDetailView(LoginRequiredMixin, DetailView):

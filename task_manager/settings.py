@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     'bootstrap4',
     'whitenoise.runserver_nostatic',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

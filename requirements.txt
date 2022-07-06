@@ -13,3 +13,4 @@ sqlparse==0.4.2
 psycopg2==2.9.3
 django-bootstrap4==22.1
 whitenoise==6.1.0
+django-filter~=22.1

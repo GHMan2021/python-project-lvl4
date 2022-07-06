@@ -1,8 +1,8 @@
 from django.db import models
 
-from task_manager.statuses.models import Status
-from task_manager.users.models import CustomUser
-from task_manager.labels.models import Label
+from ..statuses.models import Status
+from ..users.models import CustomUser
+from ..labels.models import Label
 
 
 class Task(models.Model):
