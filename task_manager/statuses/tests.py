@@ -41,7 +41,10 @@ class StatusTestCase(TestCase):
         self.assertTemplateUsed(response, template_name='statuses/status_update.html')
 
         new_name = 'new_name_test'
-        response = self.client.post(reverse('status_update', args=[status_test.pk]), {'name':new_name})
+        response = self.client.post(
+            reverse('status_update', args=[status_test.pk]),
+            {'name': new_name}
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('statuses_list'))
 

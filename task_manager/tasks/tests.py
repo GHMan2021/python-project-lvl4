@@ -41,7 +41,7 @@ class TaskTestCase(TestCase):
             'status': status.pk,
             'executor': user.pk,
             'labels': labels.pk
-            }
+        }
         response = self.client.post(reverse('task_create'), data=task_create_data)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('tasks_list'))

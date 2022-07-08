@@ -41,7 +41,10 @@ class LabelTestCase(TestCase):
         self.assertTemplateUsed(response, template_name='labels/label_update.html')
 
         new_name = 'new_name_test'
-        response = self.client.post(reverse('label_update', args=[label_test.pk]), {'name':new_name})
+        response = self.client.post(
+            reverse('label_update', args=[label_test.pk]),
+            {'name': new_name}
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('labels_list'))
 
