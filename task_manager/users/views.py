@@ -1,3 +1,4 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -13,10 +14,11 @@ class UsersListView(ListView):
     context_object_name = 'users_list'
 
 
-class RegisterUser(CreateView):
+class RegisterUser(SuccessMessageMixin, CreateView):
     form_class = CustomUserForm
     template_name = 'users/user_add.html'
     success_url = reverse_lazy('login')
+    success_message = "Пользователь успешно зарегистрирован"
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
