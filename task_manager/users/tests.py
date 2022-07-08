@@ -30,7 +30,7 @@ class CustomUserTestCase(TestCase):
         }
         response = self.client.post(reverse('user_add'), user_add)
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse('/'))
+        self.assertRedirects(response, reverse('login'))
 
         user = get_user_model().objects.get(username=user_add['username'])
         self.assertEqual(user.username, 'user2_username')

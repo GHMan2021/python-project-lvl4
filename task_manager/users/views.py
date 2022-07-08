@@ -16,7 +16,7 @@ class UsersListView(ListView):
 class RegisterUser(CreateView):
     form_class = CustomUserForm
     template_name = 'users/user_add.html'
-    success_url = reverse_lazy('/')
+    success_url = reverse_lazy('login')
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
