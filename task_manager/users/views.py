@@ -21,7 +21,7 @@ class RegisterUser(SuccessMessageMixin, CreateView):
     success_message = "Пользователь успешно зарегистрирован"
 
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):
+class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = CustomUser
     form_class = CustomUserForm
     template_name = 'users/user_update.html'
@@ -29,7 +29,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     success_message = "Пользователь успешно изменён"
 
 
-class UserDeleteView(LoginRequiredMixin, DeleteView):
+class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = CustomUser
     template_name = 'users/user_delete.html'
     success_url = reverse_lazy('users_list')
