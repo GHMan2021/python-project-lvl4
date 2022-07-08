@@ -51,7 +51,7 @@ class CustomUserTestCase(TestCase):
         }
         response = self.client.post(reverse('user_update', args=[user.pk]), user_update_info)
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse('/'))
+        self.assertRedirects(response, reverse('users_list'))
 
         user_updated = get_user_model().objects.first()
         self.assertEqual(user_updated.first_name, 'user3_first_name')

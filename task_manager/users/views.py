@@ -25,10 +25,12 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = CustomUser
     form_class = CustomUserForm
     template_name = 'users/user_update.html'
-    success_url = reverse_lazy('/')
+    success_url = reverse_lazy('users_list')
+    success_message = "Пользователь успешно изменён"
 
 
 class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = CustomUser
     template_name = 'users/user_delete.html'
-    success_url = reverse_lazy('/')
+    success_url = reverse_lazy('users_list')
+    success_message = "Пользователь успешно удалён"
