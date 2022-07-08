@@ -42,7 +42,7 @@ ROLLBAR = {
     'environment': 'development' if DEBUG else 'production',
     'branch': 'master',
     'root': Path(BASE_DIR, 'task_manager')
- }
+}
 rollbar.init(**ROLLBAR)
 
 # Application definition
